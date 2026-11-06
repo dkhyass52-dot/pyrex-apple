@@ -318,7 +318,7 @@
       return words.every(w => hay.includes(w)) ? [p, norm(p.name).startsWith(q) ? 0 : 1] : null;
     }).filter(Boolean).sort((a, b) => a[1] - b[1] || b[0].year - a[0].year).map(x => x[0]);
   }
-  const searchItem = p => `<a class="sitem" href="produit.html?id=${p.id}"><img src="${p.img}" alt="" loading="lazy"><div><strong>${esc(p.name)}</strong><small>${ETATS[p.etat].label} · ${p.variants.map(v => esc(v[0])).join(" · ")}</small></div><em>${fmt(minPrice(p))} F</em></a>`;
+  const searchItem = p => `<a class="sitem" href="produit.html?id=${p.id}"><img src="${p.img}" alt="" loading="lazy"><div><strong>${esc(p.name)}</strong><small>${ETATS[p.etat].label} · ${p.variants.length > 1 && p.cat === "mac" ? p.variants.length + " configurations" : p.variants.map(v => esc(v[0])).join(" / ")}</small></div><em>${fmt(minPrice(p))} F</em></a>`;
   function resultsHTML(raw, withQuick) {
     const q = raw.trim();
     if (!q) {

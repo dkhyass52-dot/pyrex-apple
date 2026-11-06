@@ -208,9 +208,9 @@ p { margin: 0; }
 .hdr--dark .icon-btn:hover, .hdr--dark .cartbtn:not(.has-items):hover { background: rgb(255 255 255 / .1); }
 
 /* ---------------- Recherche (fenêtre) ---------------- */
-.search { position: fixed; inset: 0; z-index: 150; display: grid; place-items: start center; padding: 9vh 16px 16px; pointer-events: none; }
+.search { position: fixed; inset: 0; z-index: 150; display: grid; grid-template-columns: minmax(0, 1fr); place-items: start center; padding: 9vh 16px 16px; pointer-events: none; }
 .search__bg { position: absolute; inset: 0; background: rgb(11 10 8 / .5); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); opacity: 0; transition: opacity .25s; }
-.search__panel { position: relative; width: min(640px, 100%); background: #fff; border-radius: 24px; box-shadow: var(--float); padding: 22px 22px 16px; opacity: 0; transform: scale(.97); transition: transform .18s ease-out, opacity .18s ease-out; }
+.search__panel { position: relative; width: min(640px, 100%); max-width: 100%; min-width: 0; background: #fff; border-radius: 24px; box-shadow: var(--float); padding: 22px 22px 16px; opacity: 0; transform: scale(.97); transition: transform .18s ease-out, opacity .18s ease-out; }
 .search.is-open { pointer-events: auto; }
 .search.is-open .search__bg { opacity: 1; }
 .search.is-open .search__panel { opacity: 1; transform: none; }
@@ -1021,7 +1021,7 @@ output { font-weight: 800; color: var(--or-700); font-variant-numeric: tabular-n
 .grades span { padding: 12px 14px; border-radius: 16px; background: rgb(255 255 255 / .55); }
 .grades small { display: block; font-size: 12px; font-weight: 600; color: var(--ink-700); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .grades strong { display: block; font-size: 1.25rem; font-weight: 800; font-stretch: 112%; line-height: 1.2; }
-@media (max-width: 640px) { .tabs-pill { display: flex; } .tabs-pill button { flex: 1; justify-content: center; padding: 9px 6px; } .hide-sm { display: none; } .grades strong { font-size: 1.05rem; } .grades span { padding: 10px; } }
+@media (max-width: 640px) { .search { padding: 12px 12px 16px; } .search__panel { padding: 18px 14px 12px; border-radius: 20px; } .sfield kbd { display: none; } .sitem { gap: 10px; padding: 8px; } .sitem em { font-size: 13px; } .sresults { max-height: min(62vh, 520px); } .tabs-pill { display: flex; } .tabs-pill button { flex: 1; justify-content: center; padding: 9px 6px; } .hide-sm { display: none; } .grades strong { font-size: 1.05rem; } .grades span { padding: 10px; } }
 .hero__pill .status { color: #8fe3b4; }
 .hero__pill .status .live::before, .hero__pill .status .live::after { background: #5fd394; }
 .hero__pill .status.is-closed { color: rgb(255 255 255 / .7); }
