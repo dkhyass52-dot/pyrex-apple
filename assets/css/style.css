@@ -57,6 +57,8 @@
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 body { margin: 0; font: 400 15px/1.62 var(--font); color: var(--ink-950); background: var(--ink-50); overflow-x: hidden; }
+/* Safari sur iPhone ignore souvent overflow-x sur body seul : on coupe aussi sur html (clip ne casse pas l'en-tête collant) */
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
 body.no-scroll { overflow: hidden; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
@@ -883,7 +885,7 @@ output { font-weight: 800; color: var(--or-700); font-variant-numeric: tabular-n
 @keyframes shine { 0% { background-position: 120% 0; } 35%, 100% { background-position: -20% 0; } }
 @keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(-60px, 40px) scale(1.15); } }
 @keyframes driftB { from { transform: translate(0, 0); } to { transform: translate(50px, -30px); } }
-@keyframes fabPing { 0% { transform: scale(1); opacity: .45; } 45%, 100% { transform: scale(1.7); opacity: 0; } }
+@keyframes fabPing { 0% { transform: scale(1); opacity: .45; } 45%, 100% { transform: scale(1.45); opacity: 0; } }
 @keyframes wiggle { 0%, 100% { rotate: 0deg; } 25% { rotate: -10deg; } 75% { rotate: 8deg; } }
 
 /* ---- Héros : entrée en cascade ---- */
@@ -941,7 +943,7 @@ output { font-weight: 800; color: var(--or-700); font-variant-numeric: tabular-n
 .js .reveal:not(.is-in) { opacity: 0; transform: translateY(28px); }
 .js .reveal--zoom:not(.is-in) { transform: scale(.94) translateY(14px); }
 .js .reveal--left:not(.is-in) { transform: translateX(-30px); }
-.js .reveal--right:not(.is-in) { transform: translateX(30px); }
+.js .reveal--right:not(.is-in) { transform: scale(.96) translateY(18px); }   /* pas de décalage vers la droite : rien ne doit dépasser de l'écran */
 .js .reveal--pop:not(.is-in) { transform: scale(.7); }
 /* Étapes : les pointillés se dessinent, les icônes rebondissent */
 .js .how__steps li::after { transform: translateY(-50%) scaleX(0); transform-origin: 0 50%; transition: transform .9s var(--ease) .35s; }
