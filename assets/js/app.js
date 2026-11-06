@@ -11,6 +11,9 @@
   const PAGE = document.body.dataset.page || "";
   const params = new URLSearchParams(location.search);
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // transitions entre les pages (navigateurs compatibles) : une transition interrompue n'est pas une erreur
+  const quietVT = e => { const vt = e.viewTransition; if (vt) [vt.ready, vt.finished, vt.updateCallbackDone].forEach(pr => pr && pr.catch(() => {})); };
+  addEventListener("pagereveal", quietVT); addEventListener("pageswap", quietVT);
 
   /* ---------------- Utilitaires ---------------- */
   const fmt = n => new Intl.NumberFormat("fr-FR").format(Math.round(n)).replace(/[  ]/g, " ");
@@ -28,6 +31,7 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
   const CAT_ICON = { iphone: "mobile", mac: "laptop", samsung: "android", accessoires: "head" };
+  let revealCards = () => {};   // remplacé plus bas par l'animation d'apparition
 
   /* ---------------- Icônes (Phosphor, licence MIT) ---------------- */
   const ICONS = {
@@ -110,6 +114,39 @@
   }
   const statusHTML = (st, short) => `<span class="live"></span>${short ? st.text.replace("Ouvert maintenant · ", "Ouvert · ") : st.text}`;
 
+  /* ---------------- Animations : compteur de prix, vol vers le panier ---------------- */
+  function tween(el, to, render, dur = 650) {
+    if (!el) return;
+    const from = typeof el._v === "number" ? el._v : null; el._v = to;
+    cancelAnimationFrame(el._raf);
+    if (reduced || from === null || from === to) { el.innerHTML = render(to); return; }
+    const t0 = performance.now();
+    const step = t => {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.innerHTML = render(k < 1 ? Math.round((from + (to - from) * e) / 500) * 500 : to);
+      if (k < 1) el._raf = requestAnimationFrame(step);
+    };
+    el._raf = requestAnimationFrame(step);
+  }
+  const untween = (el, text) => { if (!el) return; cancelAnimationFrame(el._raf); el._v = null; el.textContent = text; };
+  function flyToCart(src) {
+    const cart = $("#cartBtn");
+    if (reduced || !src || !cart || !src.animate) return false;
+    const a = src.getBoundingClientRect(), b = cart.getBoundingClientRect();
+    if (!a.width || a.bottom < 0 || a.top > innerHeight) return false;
+    const c = document.createElement("img");
+    c.src = src.currentSrc || src.src; c.alt = ""; c.className = "fly";
+    Object.assign(c.style, { left: a.left + "px", top: a.top + "px", width: a.width + "px", height: a.height + "px" });
+    document.body.appendChild(c);
+    const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+    c.animate([
+      { transform: "translate(0, 0) scale(1)", opacity: 1 },
+      { transform: `translate(${dx * .45}px, ${dy * .45 - 80}px) scale(.55)`, opacity: 1, offset: .55 },
+      { transform: `translate(${dx}px, ${dy}px) scale(.1)`, opacity: .2 }
+    ], { duration: 820, easing: "cubic-bezier(.5, 0, .3, 1)" }).onfinish = () => c.remove();
+    return true;
+  }
+
   /* ---------------- Panier ---------------- */
   const KEY = "pyrex_cart_v2";
   let mem = store.get(KEY, []);
@@ -164,6 +201,7 @@
           <button class="icon-btn burger" type="button" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mnav">${icon("list", "ico ico--list")}${icon("close", "ico ico--x")}</button>
         </div>
       </div>
+      <span class="progress" id="progress" aria-hidden="true"></span>
       <div class="mnav" id="mnav">
         <div class="container">
           <nav aria-label="Menu mobile">
@@ -255,7 +293,16 @@
   /* ---------------- En-tête : sombre en haut de l'accueil, clair au défilement ---------------- */
   const hdr = $("#header"), burger = $("#burger");
   const syncHeader = () => hdr && hdr.classList.toggle("hdr--dark", DARK_HEADER && scrollY <= 24 && !hdr.classList.contains("is-menu"));
-  addEventListener("scroll", syncHeader, { passive: true }); syncHeader();
+  const progress = $("#progress"), woods = reduced ? [] : $$(".hero .wood, .banner .wood");
+  let ticking = false;
+  function onScroll() {
+    syncHeader();
+    if (progress) { const max = document.documentElement.scrollHeight - innerHeight; progress.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`; }
+    woods.forEach(w => { const r = w.parentElement.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) w.style.transform = `translate3d(0, ${Math.max(-60, Math.min(60, -r.top * .18))}px, 0)`; });
+    ticking = false;
+  }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener("resize", onScroll); onScroll();
   burger?.addEventListener("click", () => {
     const o = hdr.classList.toggle("is-menu");
     burger.setAttribute("aria-expanded", o); burger.setAttribute("aria-label", o ? "Fermer le menu" : "Ouvrir le menu"); syncHeader();
@@ -322,7 +369,10 @@
 
   /* ---------------- Tiroir panier & toast ---------------- */
   const drawer = $("#drawer");
-  const openDrawer = () => { drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll"); };
+  const openDrawer = () => {
+    drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false"); document.body.classList.add("no-scroll");
+    const body = $("#drawerBody"); body.classList.add("is-anim"); clearTimeout(body._t); body._t = setTimeout(() => body.classList.remove("is-anim"), 900);
+  };
   const closeDrawer = () => { drawer.classList.remove("is-open"); drawer.setAttribute("aria-hidden", "true"); document.body.classList.remove("no-scroll"); };
   $("#cartBtn")?.addEventListener("click", openDrawer);
   drawer?.addEventListener("click", e => { if (e.target.closest("[data-close]")) closeDrawer(); });
@@ -359,14 +409,24 @@
     const q = e.target.closest(".qty[data-id] [data-q]");
     if (q) { const box = q.closest(".qty"); const it = Cart.read().find(i => i.id === box.dataset.id && i.v === +box.dataset.v); if (it) Cart.setQty(it.id, it.v, it.qty + +q.dataset.q); }
     const rm = e.target.closest("[data-rm]");
-    if (rm) Cart.setQty(rm.dataset.rm, +rm.dataset.v, 0);
+    if (rm) {
+      const line = rm.closest(".line"), done = () => Cart.setQty(rm.dataset.rm, +rm.dataset.v, 0);
+      if (!line || reduced || !line.animate) return done();
+      const h = line.offsetHeight; line.style.overflow = "hidden";
+      line.animate([
+        { opacity: 1, transform: "none", height: h + "px" },
+        { opacity: 0, transform: "translateX(40px)", height: h + "px", offset: .5 },
+        { opacity: 0, transform: "translateX(40px)", height: "0px", paddingTop: "0px", paddingBottom: "0px" }
+      ], { duration: 460, easing: "ease-in-out" }).onfinish = done;
+    }
   });
 
   function renderCartUI() {
     const n = Cart.count(), btn = $("#cartBtn");
     if (btn) {
       btn.classList.toggle("has-items", n > 0);
-      $("#cartCount").textContent = n; $("#cartTotal").textContent = n ? `${fmt(Cart.subtotal())} F` : "";
+      $("#cartCount").textContent = n;
+      n ? tween($("#cartTotal"), Cart.subtotal(), v => `${fmt(v)} F`) : untween($("#cartTotal"), "");
       btn.setAttribute("aria-label", n ? `Panier : ${n} article${n > 1 ? "s" : ""}, ${fcfa(Cart.subtotal())}` : "Ouvrir le panier");
     }
     const body = $("#drawerBody"), foot = $("#drawerFoot");
@@ -381,9 +441,11 @@
     }
     if (PAGE === "cart") renderCartPage();
   }
-  function addToCart(id, v = 0, qty = 1) {
+  function addToCart(id, v = 0, qty = 1, src) {
+    const flew = flyToCart(src);
     Cart.add(id, v, qty);
-    const b = $("#cartBtn"); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+    const b = $("#cartBtn");
+    setTimeout(() => { b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }, flew ? 760 : 0);
     toast(`${icon("check")} <span>${esc(byId(id).name)} ajouté au panier</span>`, { label: "Voir", fn: openDrawer });
   }
 
@@ -407,7 +469,7 @@
   document.addEventListener("click", e => {
     const b = e.target.closest("[data-add]"); if (!b) return;
     e.preventDefault(); e.stopPropagation();
-    addToCart(b.dataset.add, 0, 1);
+    addToCart(b.dataset.add, 0, 1, b.closest(".pc")?.querySelector(".pc__media img"));
     b.classList.add("is-done"); b.innerHTML = icon("check");
     setTimeout(() => { b.classList.remove("is-done"); b.innerHTML = icon("plus"); }, 1400);
   });
@@ -513,8 +575,8 @@
     want.value = "iphone-17-pro-max";
     const upd = () => {
       const [fam, model] = sel.value.split("|"); const v = model ? tradeValue(fam, model) : null; const w = byId(want.value);
-      $("#calcVal").textContent = v ? `≈ ${fmt(v)} F` : "—";
-      $("#calcDiff").textContent = v && w ? `${fmt(Math.max(0, minPrice(w) - v))} F` : "—";
+      v ? tween($("#calcVal"), v, n => `≈ ${fmt(n)} F`) : untween($("#calcVal"), "—");
+      v && w ? tween($("#calcDiff"), Math.max(0, minPrice(w) - v), n => `${fmt(n)} F`) : untween($("#calcDiff"), "—");
       $("#calcGo").href = `echange.html?want=${want.value}${model ? `&model=${encodeURIComponent(sel.value)}` : ""}`;
     };
     sel.addEventListener("change", upd); want.addEventListener("change", upd);
@@ -602,7 +664,7 @@
       const S = { asc: (a, b) => minPrice(a) - minPrice(b), desc: (a, b) => minPrice(b) - minPrice(a), recent: (a, b) => b.year - a.year || minPrice(b) - minPrice(a), pertinence: (a, b) => (!!b.badge - !!a.badge) || b.year - a.year };
       list.sort(S[st.sort]);
       $("#shopCount").innerHTML = `<b>${list.length}</b> produit${list.length > 1 ? "s" : ""}`;
-      $("#shopGrid").innerHTML = list.map(card).join("");
+      $("#shopGrid").innerHTML = list.map(card).join(""); revealCards($("#shopGrid"));
       $("#shopEmpty").hidden = list.length > 0;
       const chips = [];
       if (st.q) chips.push(["q", `« ${esc(st.q)} »`]);
@@ -692,7 +754,9 @@
       const price = $("#price"), wa = $("#waBtn");
       const update = () => {
         const val = p.variants[v][1] * qty;
-        price.innerHTML = priceHTML(val); $("#bbPrice").textContent = fcfa(p.variants[v][1]);
+        tween(price, val, priceHTML, 500); $("#bbPrice").textContent = fcfa(p.variants[v][1]);
+        if (price._v0 !== undefined && price._v0 !== val && !reduced) { price.classList.remove("is-flash"); void price.offsetWidth; price.classList.add("is-flash"); }
+        price._v0 = val;
         $("#qOut").textContent = qty;
         $$(".variant").forEach(b => { const on = +b.dataset.v === v; b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", on); });
         wa.href = waUrl(`Bonjour Pyrex Apple 👋\nJe souhaite commander :\n• ${p.name} (${p.variants[v][0]})\n• État : ${e.label}\n• Quantité : ${qty}\n• Prix affiché : ${fcfa(val)}\n\nEst-il disponible ?\n${location.href}`);
@@ -702,15 +766,15 @@
       const mt = () => {
         const sel = $("#mtModel"); if (!sel) return;
         const [fam, model] = sel.value.split("|"); const tv = model ? tradeValue(fam, model) : null;
-        $("#mtOut").textContent = tv ? `${fmt(Math.max(0, p.variants[v][1] - tv))} F` : "—";
+        tv ? tween($("#mtOut"), Math.max(0, p.variants[v][1] - tv), n => `${fmt(n)} F`) : untween($("#mtOut"), "—");
         $("#mtGo").href = `echange.html?want=${p.id}${model ? `&model=${encodeURIComponent(sel.value)}` : ""}`;
       };
       $("#mtModel")?.addEventListener("change", mt);
       $("#variants").addEventListener("click", ev => { const b = ev.target.closest(".variant"); if (b) { v = +b.dataset.v; update(); } });
       $("#qMinus").onclick = () => { qty = Math.max(1, qty - 1); update(); };
       $("#qPlus").onclick = () => { qty = Math.min(9, qty + 1); update(); };
-      $("#addBtn").onclick = () => addToCart(p.id, v, qty);
-      $("#bbAdd").onclick = () => addToCart(p.id, v, qty);
+      $("#addBtn").onclick = () => addToCart(p.id, v, qty, $("#stage img"));
+      $("#bbAdd").onclick = () => addToCart(p.id, v, qty, $("#buybar img"));
       $$(".tabs__nav button").forEach(b => b.onclick = () => {
         $$(".tabs__nav button").forEach(x => { x.classList.toggle("is-active", x === b); x.setAttribute("aria-selected", x === b); });
         $$(".tabs__panel").forEach(x => x.hidden = x.dataset.panel !== b.dataset.tab);
@@ -744,9 +808,9 @@
     $("#cartLines").innerHTML = items.map(lineHTML).join("");
     const d = SHOP.delivery.find(x => x.id === ($("input[name=delivery]:checked") || {}).value) || SHOP.delivery[0];
     const sub = Cart.subtotal();
-    $("#sumSub").textContent = fcfa(sub);
+    tween($("#sumSub"), sub, fcfa);
     $("#sumShip").textContent = d.price ? fcfa(d.price) : "Gratuit";
-    $("#sumTotal").textContent = fcfa(sub + d.price);
+    tween($("#sumTotal"), sub + d.price, fcfa);
     $("#sumCount").textContent = Cart.count();
   }
   if (PAGE === "cart") {
@@ -803,9 +867,9 @@
       $("#tBattOut").textContent = batt.value + " %";
       const v = val(), box = $("#est"), w = byId(want.value);
       $("#estWantName").textContent = w ? w.name : "—";
-      if (v == null) { $("#estVal").textContent = "—"; $("#estDiff").textContent = "—"; return; }
+      if (v == null) { $("#estVal").textContent = "—"; untween($("#estDiff"), "—"); return; }
       $("#estVal").textContent = `${fmt(Math.round(v * .9 / 5000) * 5000)} – ${fmt(v)} F`;
-      $("#estDiff").textContent = w ? fcfa(Math.max(0, minPrice(w) - v)) : "—";
+      w ? tween($("#estDiff"), Math.max(0, minPrice(w) - v), fcfa) : untween($("#estDiff"), "—");
       box.classList.remove("is-bump"); void box.offsetWidth; box.classList.add("is-bump");
     }
     form.addEventListener("input", estimate); form.addEventListener("change", estimate);
@@ -828,15 +892,70 @@
 
   fillShopInfo();
 
-  /* ---------------- Apparition au scroll ---------------- */
-  const io = "IntersectionObserver" in window ? new IntersectionObserver(en => en.forEach(x => {
-    if (x.isIntersecting) { x.target.classList.add("is-in"); io.unobserve(x.target); }
-  }), { threshold: .12, rootMargin: "0px 0px -40px 0px" }) : null;
-  $$("[data-reveal] > *, .reveal").forEach((el, i) => {
-    if (!io) { el.classList.add("is-in"); return; }
-    el.classList.add("reveal"); el.style.transitionDelay = (i % 4) * 70 + "ms";
+  /* ---------------- Apparitions au défilement ---------------- */
+  const REVEAL = [
+    // [sélecteur, variante, décalage entre éléments voisins (ms)]
+    [".trust__item", "", 90], [".shead", ""], [".cat", "zoom", 90], [".budget a", "", 70],
+    [".how", ""], [".how__steps li", "", 150], [".bigcard", "", 120], [".ticks li", "left", 45], [".grades span", "pop", 90],
+    [".visit__photo", "zoom"], [".visit__card", "right"], [".info > li", "", 90],
+    [".faq > div:first-child", "left"], [".accordion details", "", 60], [".cta", "zoom"],
+    [".perk", "", 90], [".map", "zoom"], [".note", ""], [".footer__brand", ""], [".footer__cols > div", "", 90],
+    [".cart .card-box", "", 90], [".trade > .card-box", "left"], [".est", "right"], [".empty", "zoom"]
+  ];
+  const io = !reduced && "IntersectionObserver" in window ? new IntersectionObserver(entries => entries.forEach(x => {
+    if (!x.isIntersecting) return;
+    const el = x.target; io.unobserve(el); el.classList.add("is-in");
+    // une fois apparu, l'élément retrouve ses propres transitions (survol, etc.)
+    setTimeout(() => { el.classList.remove("reveal", "reveal--zoom", "reveal--left", "reveal--right", "reveal--pop"); el.style.transitionDelay = ""; }, 900 + (parseFloat(el.style.transitionDelay) || 0));
+  }), { threshold: .12, rootMargin: "0px 0px -6% 0px" }) : null;
+  function reveal(el, variant = "", delay = 0) {
+    if (!io || el.classList.contains("is-in")) { el.classList.add("is-in"); return; }
+    el.classList.add("reveal"); if (variant) el.classList.add("reveal--" + variant);
+    if (delay) el.style.transitionDelay = delay + "ms";
     io.observe(el);
+  }
+  function revealAll(root = document) {
+    REVEAL.forEach(([sel, variant, step = 0]) => {
+      const groups = new Map();
+      $$(sel, root).forEach(el => {
+        const i = groups.get(el.parentNode) || 0; groups.set(el.parentNode, i + 1);
+        reveal(el, variant, Math.min(i, 6) * step);
+      });
+    });
+  }
+  // cartes produits : apparition en cascade, colonne par colonne (y compris après un filtre)
+  revealCards = root => $$(".pc", root).forEach((el, i) => reveal(el, "", (i % 4) * 70));
+  revealAll(); $$(".grid, .rail").forEach(g => revealCards(g));
+
+  /* ---------------- FAQ : ouverture et fermeture fluides ---------------- */
+  $$(".accordion details").forEach(d => {
+    const sum = $("summary", d), body = $("p", d);
+    if (!sum || !body) return;
+    sum.addEventListener("click", e => {
+      if (reduced || !body.animate) return;
+      e.preventDefault();
+      if (d.open) {
+        d.classList.add("is-closing");
+        body.animate([{ height: body.offsetHeight + "px", opacity: 1 }, { height: "0px", paddingBottom: "0px", opacity: 0 }], { duration: 260, easing: "ease-in" })
+          .onfinish = () => { d.open = false; d.classList.remove("is-closing"); };
+      } else {
+        d.open = true;
+        body.animate([{ height: "0px", paddingBottom: "0px", opacity: 0 }, { height: body.offsetHeight + "px", opacity: 1 }], { duration: 340, easing: "cubic-bezier(.2, .8, .2, 1)" });
+      }
+    });
   });
+
+  /* ---------------- Héros : la vitrine suit la souris (ordinateur) ---------------- */
+  const vis = $(".hero__visual");
+  if (vis && !reduced && matchMedia("(pointer: fine) and (min-width: 1024px)").matches) {
+    const stg = $(".stage", vis), tk = $("#ticket");
+    vis.addEventListener("pointermove", e => {
+      const r = vis.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      stg.style.transform = `perspective(1200px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg)`;
+      if (tk) tk.style.translate = `${-x * 16}px ${-y * 12}px`;
+    });
+    vis.addEventListener("pointerleave", () => { stg.style.transform = ""; if (tk) tk.style.translate = ""; });
+  }
 
   renderCartUI();
 })();

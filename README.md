@@ -24,6 +24,16 @@ Recherche instantanée sur toutes les pages : bouton loupe, touche `/` ou `Ctrl 
 
 Le ticket d'échange de l'accueil est un exemple calculé avec les vraies valeurs du site (reprise d'un iPhone 13, prix de l'iPhone 17 Pro) : il se met à jour tout seul quand les prix changent dans `products.js`.
 
+## Animations
+Toutes dans `style.css` (section « ANIMATIONS ») et `app.js` :
+- accueil : titre qui monte ligne par ligne, reflet doré sur « testé devant vous », vitrine qui s'élève, téléphone qui flotte, ticket d'échange qui glisse ; sur ordinateur, la vitrine suit légèrement la souris ;
+- mur de bois en léger parallaxe au défilement, lueurs dorées qui dérivent ;
+- apparitions en cascade au défilement (sections, rayons, cartes produits, étapes avec pointillés qui se dessinent, FAQ, pied de page) ;
+- survols : cartes qui se soulèvent, reflet sur les boutons, flèches qui avancent, bois qui glisse dans les tuiles des rayons ;
+- panier : le produit « vole » jusqu'au bouton panier, totaux et prix qui défilent comme un compteur, lignes retirées qui glissent ;
+- FAQ qui s'ouvre en douceur, barre de lecture dorée sous l'en-tête, appel discret sur le bouton WhatsApp, fondu entre les pages (Chrome, Edge, Safari récent).
+Si le téléphone ou l'ordinateur a l'option « Réduire les animations » activée, tout s'affiche directement, sans mouvement.
+
 ## Gérer la boutique
 Tout se modifie dans **`assets/js/products.js`** :
 - `SHOP` : numéro WhatsApp, horaires, itinéraire, frais de livraison, liens réseaux sociaux
