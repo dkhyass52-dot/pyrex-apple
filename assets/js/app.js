@@ -185,7 +185,7 @@
       .map(([k, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener" aria-label="${k}">${icon({ facebook: "fb", instagram: "ig", tiktok: "tt" }[k])}</a>`).join("");
     return `
     <footer class="footer">
-      <span class="wax" aria-hidden="true"></span>
+      <span class="wood" aria-hidden="true"></span>
       <div class="container footer__inner">
         <div class="footer__top">
           <div class="footer__brand">
@@ -634,7 +634,6 @@
       <div class="product">
         <div class="gallery">
           <div class="gallery__stage" id="stage">
-            <span class="wax" aria-hidden="true"></span>
             <div class="gallery__tags"><span class="badge badge--${p.etat}">${e.label}</span>${p.badge ? `<span class="badge badge--hot">${esc(p.badge)}</span>` : ""}</div>
             <img src="${p.img}" alt="${esc(p.name)}" class="${p.wide ? "is-wide" : ""}">
             <span class="gallery__zoom" aria-hidden="true">${icon("zoom")}</span>

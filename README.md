@@ -2,7 +2,7 @@
 
 Site statique (HTML / CSS / JS, aucun build).
 
-Design : même grammaire visuelle qu'Aximɛ (une seule police, Archivo, élargie pour les titres ; un sombre de marque ; un accent vif pour les actions ; des neutres teintés ; le motif « wax »). Ici le sombre est le noir de l'enseigne, l'accent est l'or, et le motif wax reprend les orbites et l'étincelle du logo. Les icônes viennent de Phosphor (licence MIT), intégrées dans `app.js`.
+Design : même grammaire visuelle qu'Aximɛ (une seule police, Archivo, élargie pour les titres ; un sombre de marque ; un accent vif pour les actions ; des neutres teintés ; un motif de fond). Ici le sombre est le noir de l'enseigne, l'accent est l'or, et le motif de fond est le mur de tasseaux en bois de la boutique (`assets/img/bois-tasseaux.webp`, texture raccordable). Les icônes viennent de Phosphor (licence MIT), intégrées dans `app.js`.
 
 ## Déployer
 1. Pousser le dossier sur GitHub (`dkhyass52-dot/pyrex-apple`).
