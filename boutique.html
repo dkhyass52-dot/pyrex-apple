@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0c12" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Boutique — Pyrex Apple, Cotonou</title>
+  <meta name="description" content="Tous les iPhone, MacBook, Samsung Galaxy et accessoires disponibles chez Pyrex Apple à Cotonou. Prix en FCFA, garantie et livraison le jour même." />
+</head>
+<body data-page="shop">
+  <div id="site-header"></div>
+
+  <main class="container">
+    <header class="page-head">
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span id="shopCrumb">Boutique</span></nav>
+      <h1 id="shopTitle">Boutique</h1>
+      <p id="shopSub"></p>
+    </header>
+
+    <div class="shop">
+      <aside class="filters" id="filters" aria-label="Filtres">
+        <div class="filters__head"><h3>Filtrer</h3><button class="icon-btn" id="filtersClose" aria-label="Fermer les filtres"><svg class="ico" viewBox="0 0 24 24"><use href="#i-close"/></svg></button></div>
+        <div class="fgroup"><h4>Catégorie</h4><div id="fCats"></div></div>
+        <div class="fgroup"><h4>Marque</h4><div id="fBrands"></div></div>
+        <div class="fgroup"><h4>État</h4><div id="fEtats"></div></div>
+        <div class="fgroup">
+          <h4>Budget maximum</h4>
+          <input type="range" id="fPrice" min="0" aria-label="Prix maximum" />
+          <div class="range-out"><span>0 F</span><span id="fPriceOut"></span></div>
+        </div>
+        <div class="fgroup" style="display:grid;gap:8px">
+          <button class="btn btn--primary btn--sm filter-toggle" id="filtersApply" type="button">Voir les résultats</button>
+          <button class="btn btn--ghost btn--sm" id="fReset" type="button">Réinitialiser</button>
+        </div>
+      </aside>
+
+      <section>
+        <div class="toolbar">
+          <span class="toolbar__count" id="shopCount"></span>
+          <label class="field-search"><svg class="ico" viewBox="0 0 24 24"><use href="#i-search"/></svg><input type="search" id="shopSearch" placeholder="Rechercher un modèle…" aria-label="Rechercher un modèle"></label>
+          <button class="btn btn--ghost btn--sm filter-toggle" id="filterToggle" type="button"><svg class="ico" viewBox="0 0 24 24"><use href="#i-filter"/></svg> Filtres</button>
+          <select class="select" id="shopSort" aria-label="Trier">
+            <option value="pertinence">Pertinence</option>
+            <option value="recent">Plus récents</option>
+            <option value="asc">Prix croissant</option>
+            <option value="desc">Prix décroissant</option>
+          </select>
+        </div>
+        <div class="grid" id="shopGrid"></div>
+        <div class="empty" id="shopEmpty" hidden>
+          <h3>Aucun produit ne correspond</h3>
+          <p>Ce modèle n'est peut-être pas en ligne, mais on peut le trouver pour toi.</p>
+          <a class="btn btn--wa" data-wa="Bonjour Pyrex Apple, je cherche un appareil que je ne trouve pas sur le site :">Demander sur WhatsApp</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

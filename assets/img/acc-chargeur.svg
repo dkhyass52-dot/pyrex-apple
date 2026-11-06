@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3e1dc"/></linearGradient><linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f3ef"/><stop offset="1" stop-color="#d7d5cf"/></linearGradient></defs>
+<ellipse cx="200" cy="330" rx="110" ry="14" fill="#000" opacity=".08"/>
+<rect x="160" y="62" width="14" height="52" rx="4" fill="#c9c7c1"/><rect x="226" y="62" width="14" height="52" rx="4" fill="#c9c7c1"/>
+<rect x="105" y="105" width="190" height="215" rx="38" fill="url(#a)" stroke="#d9d7d1" stroke-width="2"/>
+<rect x="120" y="120" width="160" height="185" rx="28" fill="url(#b)" opacity=".55"/>
+<rect x="176" y="250" width="48" height="16" rx="8" fill="#2a2a30"/><rect x="184" y="255" width="32" height="6" rx="3" fill="#55555d"/>
+<text x="200" y="200" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="#b9b7b1">20W</text></svg>

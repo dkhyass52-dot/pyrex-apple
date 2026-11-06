@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 220"><defs>
+<linearGradient id="gmk" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3a0ca3"/><stop offset=".45" stop-color="#7b2ff7"/><stop offset="1" stop-color="#b16cff"/></linearGradient>
+<mask id="mmk" maskUnits="userSpaceOnUse" x="-80" y="-80" width="420" height="360"><ellipse cx="128" cy="100" rx="128" ry="40" fill="#fff"/><ellipse cx="131" cy="92" rx="124" ry="34" fill="#000"/></mask>
+<filter id="dmk" x="-20%" y="-20%" width="140%" height="140%"><feMorphology operator="dilate" radius="4.5"/></filter>
+</defs><mask id="pmmk" maskUnits="userSpaceOnUse" x="-60" y="-60" width="420" height="360"><rect x="-60" y="-60" width="420" height="360" fill="#fff"/><g fill="#000"><path d="M140 46 C143.5 66 149 71.5 169 75 C149 78.5 143.5 84 140 104 C136.5 84 131 78.5 111 75 C131 71.5 136.5 66 140 46 Z"/><path d="M170 34 C171.2 40.5 173 42.3 179.5 43.5 C173 44.7 171.2 46.5 170 53 C168.8 46.5 167 44.7 160.5 43.5 C167 42.3 168.8 40.5 170 34 Z"/></g><g fill="#000" filter="url(#dmk)"><path d="M16 208 C 128 182 258 128 240 50 C 233 20 205 6 168 8 C 200 12 222 28 224 56 C 228 116 124 166 16 208 Z"/></g></mask>
+<path d="M50 20 H140 C180 20 202 45 202 75 C202 105 180 128 140 128 H90 V200 H50 Z" fill="#0d0c12" mask="url(#pmmk)"/>
+<g fill="url(#gmk)"><path d="M16 208 C 128 182 258 128 240 50 C 233 20 205 6 168 8 C 200 12 222 28 224 56 C 228 116 124 166 16 208 Z"/></g></svg>

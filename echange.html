@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0c12" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Échange & reprise — Pyrex Apple, Cotonou</title>
+  <meta name="description" content="Estime la valeur de reprise de ton iPhone, Samsung ou MacBook en 30 secondes et échange-le contre un appareil plus récent chez Pyrex Apple, Cotonou." />
+</head>
+<body data-page="trade">
+  <div id="site-header"></div>
+
+  <main class="container">
+    <header class="page-head">
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Échange & reprise</span></nav>
+      <h1>Échange ton ancien appareil</h1>
+      <p>Décris ton iPhone, Samsung ou MacBook. Tu obtiens une estimation immédiate, puis on fixe le prix exact en boutique après un contrôle de 10 minutes.</p>
+    </header>
+
+    <div class="trade">
+      <form class="card-box" id="tradeForm" novalidate>
+        <div class="tabs-pill" id="famTabs" role="tablist">
+          <button type="button" class="is-active" data-fam="iPhone">iPhone</button>
+          <button type="button" data-fam="Samsung">Samsung</button>
+          <button type="button" data-fam="MacBook">MacBook</button>
+        </div>
+
+        <div style="display:grid;gap:20px">
+          <div class="form-grid">
+            <label class="field"><span>Modèle</span><select class="select" id="tModel" required></select></label>
+            <label class="field"><span id="tStorageLabel">Stockage</span><select class="select" id="tStorage"></select></label>
+          </div>
+
+          <label class="field">
+            <span>Santé de la batterie <output id="tBattOut">88 %</output></span>
+            <input type="range" id="tBatt" min="60" max="100" value="88">
+          </label>
+
+          <fieldset class="field">
+            <legend>État général</legend>
+            <div class="seg">
+              <label><input type="radio" name="cond" value="1" data-label="Très bon" checked><span>Très bon<small>aucune rayure</small></span></label>
+              <label><input type="radio" name="cond" value="0.85" data-label="Bon"><span>Bon<small>micro-rayures</small></span></label>
+              <label><input type="radio" name="cond" value="0.65" data-label="Abîmé"><span>Abîmé<small>coups, fissures</small></span></label>
+            </div>
+          </fieldset>
+
+          <div class="checks">
+            <label class="check"><input type="checkbox" id="tScreen"><span>Écran déjà changé ou cassé</span></label>
+            <label class="check"><input type="checkbox" id="tFace"><span id="tFaceLabel">Face ID / Touch ID ne fonctionne pas</span></label>
+            <label class="check"><input type="checkbox" id="tAcc"><span id="tAccLabel">J'ai la boîte d'origine</span></label>
+          </div>
+
+          <label class="field"><span>Tu veux l'échanger contre</span><select class="select" id="tWant"></select></label>
+        </div>
+      </form>
+
+      <aside class="est" id="est" aria-live="polite">
+        <span class="est__k">Reprise estimée</span>
+        <strong class="est__v" id="estVal">—</strong>
+        <hr>
+        <span class="est__k">Tu veux</span>
+        <strong class="est__v" style="font-size:1.15rem" id="estWantName">—</strong>
+        <span class="est__k" style="margin-top:16px">Il te resterait à payer</span>
+        <strong class="est__v est__v--sm" id="estDiff">—</strong>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg><span id="tAccountTip">Désactive « Localiser » et déconnecte iCloud</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Sauvegarde tes photos et contacts (on t'aide pour le transfert)</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Apporte ta pièce d'identité</li>
+        </ul>
+        <button type="submit" form="tradeForm" class="btn btn--wa btn--block btn--lg"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Envoyer ma demande</button>
+        <small>Estimation indicative. Le prix final est fixé après contrôle en boutique. Les appareils bloqués (iCloud, compte Google) ne sont pas repris.</small>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

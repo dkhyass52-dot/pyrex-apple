@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0c12" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Mon panier — Pyrex Apple, Cotonou</title>
+  <meta name="description" content="Finalise ta commande Pyrex Apple et envoie-la sur WhatsApp." />
+</head>
+<body data-page="cart">
+  <div id="site-header"></div>
+
+  <main class="container">
+    <header class="page-head">
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Panier</span></nav>
+      <h1>Mon panier</h1>
+    </header>
+
+    <div class="empty" id="cartEmpty" hidden style="margin:24px 0 96px">
+      <h3>Ton panier est vide</h3>
+      <p>Découvre nos iPhone, MacBook et Samsung testés et garantis.</p>
+      <a class="btn btn--primary" href="boutique.html">Aller à la boutique</a>
+    </div>
+
+    <form class="cart" id="cartFull" hidden novalidate>
+      <div>
+        <div class="card-box">
+          <h2><span>1</span> Mes articles</h2>
+          <div id="cartLines"></div>
+        </div>
+        <div class="card-box">
+          <h2><span>2</span> Livraison</h2>
+          <div class="delivery" id="deliveryOpts"></div>
+        </div>
+        <div class="card-box">
+          <h2><span>3</span> Mes coordonnées</h2>
+          <div class="form-grid">
+            <label class="field"><span>Nom et prénom</span><input class="input" id="cName" autocomplete="name" required></label>
+            <label class="field"><span>Paiement</span>
+              <select class="select" id="cPay"><option>Espèces à la livraison</option><option>MTN Mobile Money</option><option>Moov Money</option><option>Celtiis Cash</option></select>
+            </label>
+            <label class="field field--full" id="addrField"><span>Adresse de livraison <em>quartier, repère</em></span><input class="input" id="cAddr" autocomplete="street-address" placeholder="Ex. Fidjrossè, près de la pharmacie…"></label>
+            <label class="field field--full"><span>Note <em>facultatif</em></span><textarea id="cNote" placeholder="Couleur souhaitée, créneau de livraison…"></textarea></label>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card-box summary">
+        <h2>Récapitulatif</h2>
+        <div class="summary__row"><span>Articles (<span id="sumCount">0</span>)</span><strong id="sumSub"></strong></div>
+        <div class="summary__row"><span>Livraison</span><strong id="sumShip"></strong></div>
+        <div class="summary__total"><span>Total</span><strong id="sumTotal"></strong></div>
+        <button class="btn btn--wa btn--lg btn--block" type="submit" id="checkoutBtn"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Envoyer ma commande</button>
+        <a href="boutique.html" class="btn btn--ghost btn--block">Continuer mes achats</a>
+        <p class="summary__note">Ta commande s'ouvre dans WhatsApp, prête à envoyer. Rien n'est payé en ligne : tu paies à la réception, après avoir testé ton appareil.</p>
+        <div class="pay"><span>Espèces</span><span>MTN MoMo</span><span>Moov Money</span><span>Celtiis Cash</span></div>
+      </aside>
+    </form>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
