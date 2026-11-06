@@ -2,61 +2,72 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d0c12" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#14120e" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <title>Boutique — Pyrex Apple, Cotonou</title>
-  <meta name="description" content="Tous les iPhone, MacBook, Samsung Galaxy et accessoires disponibles chez Pyrex Apple à Cotonou. Prix en FCFA, garantie et livraison le jour même." />
+  <meta property="og:site_name" content="Pyrex Apple" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Boutique — Pyrex Apple, Zongo Cotonou</title>
+  <meta name="description" content="Tous les iPhone, MacBook, Samsung Galaxy et accessoires disponibles chez Pyrex Apple à Zongo, Cotonou. Prix en FCFA, garantie, livraison le jour même." />
+  <meta property="og:title" content="La boutique Pyrex Apple" />
 </head>
 <body data-page="shop">
   <div id="site-header"></div>
 
-  <main class="container">
-    <header class="page-head">
+  <div class="container banner-wrap">
+    <header class="banner">
+      <span class="wax wax--right" aria-hidden="true"></span><span class="glow" aria-hidden="true"></span>
       <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span id="shopCrumb">Boutique</span></nav>
       <h1 id="shopTitle">Boutique</h1>
       <p id="shopSub"></p>
+      <div class="banner__chips" id="heroCats"></div>
     </header>
+  </div>
 
+  <main class="container" id="contenu">
     <div class="shop">
-      <aside class="filters" id="filters" aria-label="Filtres">
-        <div class="filters__head"><h3>Filtrer</h3><button class="icon-btn" id="filtersClose" aria-label="Fermer les filtres"><svg class="ico" viewBox="0 0 24 24"><use href="#i-close"/></svg></button></div>
-        <div class="fgroup"><h4>Catégorie</h4><div id="fCats"></div></div>
+      <aside class="panel filters" id="filters" aria-label="Filtres">
+        <div class="filters__head"><h3>Filtrer</h3><button class="icon-btn" type="button" id="filtersClose" aria-label="Fermer les filtres"><svg class="ico" viewBox="0 0 24 24"><use href="#i-close"/></svg></button></div>
+        <div class="fgroup"><h4>Budget</h4><div id="fBudget"></div></div>
+        <div class="fgroup"><h4>État et garantie</h4><div id="fEtats"></div></div>
         <div class="fgroup"><h4>Marque</h4><div id="fBrands"></div></div>
-        <div class="fgroup"><h4>État</h4><div id="fEtats"></div></div>
-        <div class="fgroup">
-          <h4>Budget maximum</h4>
-          <input type="range" id="fPrice" min="0" aria-label="Prix maximum" />
-          <div class="range-out"><span>0 F</span><span id="fPriceOut"></span></div>
-        </div>
+        <div class="fgroup" id="fTypesGroup"><h4>Type d'accessoire</h4><div id="fTypes"></div></div>
         <div class="fgroup" style="display:grid;gap:8px">
-          <button class="btn btn--primary btn--sm filter-toggle" id="filtersApply" type="button">Voir les résultats</button>
-          <button class="btn btn--ghost btn--sm" id="fReset" type="button">Réinitialiser</button>
+          <button class="btn btn--dark btn--pill filter-toggle" id="filtersApply" type="button">Voir les résultats</button>
+          <button class="btn btn--quiet btn--sm" id="fReset" type="button">Réinitialiser les filtres</button>
         </div>
       </aside>
 
-      <section>
+      <section aria-label="Produits">
         <div class="toolbar">
           <span class="toolbar__count" id="shopCount"></span>
           <label class="field-search"><svg class="ico" viewBox="0 0 24 24"><use href="#i-search"/></svg><input type="search" id="shopSearch" placeholder="Rechercher un modèle…" aria-label="Rechercher un modèle"></label>
-          <button class="btn btn--ghost btn--sm filter-toggle" id="filterToggle" type="button"><svg class="ico" viewBox="0 0 24 24"><use href="#i-filter"/></svg> Filtres</button>
-          <select class="select" id="shopSort" aria-label="Trier">
+          <button class="btn btn--ghost btn--pill filter-toggle" id="filterToggle" type="button"><svg class="ico" viewBox="0 0 24 24"><use href="#i-filter"/></svg> Filtres</button>
+          <select class="select select--pill" id="shopSort" aria-label="Trier les produits">
             <option value="pertinence">Pertinence</option>
             <option value="recent">Plus récents</option>
             <option value="asc">Prix croissant</option>
             <option value="desc">Prix décroissant</option>
           </select>
         </div>
+        <div class="active-filters" id="activeFilters"></div>
         <div class="grid" id="shopGrid"></div>
         <div class="empty" id="shopEmpty" hidden>
+          <div class="empty__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-search"/></svg></div>
           <h3>Aucun produit ne correspond</h3>
-          <p>Ce modèle n'est peut-être pas en ligne, mais on peut le trouver pour toi.</p>
-          <a class="btn btn--wa" data-wa="Bonjour Pyrex Apple, je cherche un appareil que je ne trouve pas sur le site :">Demander sur WhatsApp</a>
+          <p>Ce modèle n'est peut-être pas encore en ligne. Demandez-le-nous : nous le trouvons souvent en 24 à 48 h.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <a class="btn btn--wa btn--pill" data-wa="Bonjour Pyrex Apple, je cherche un appareil que je ne trouve pas sur le site :"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Demander sur WhatsApp</a>
+            <button class="btn btn--ghost btn--pill" type="button" id="shopEmptyReset">Effacer les filtres</button>
+          </div>
         </div>
       </section>
     </div>

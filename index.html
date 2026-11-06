@@ -2,192 +2,262 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d0c12" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#14120e" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <title>Pyrex Apple — iPhone, MacBook & Samsung à Cotonou | Vente & échange</title>
-  <meta name="description" content="Pyrex Apple, Cotonou : iPhone, MacBook, Samsung Galaxy et accessoires neufs, premium ou reconditionnés. Testés devant toi, garantis, livrés le jour même. Reprise de ton ancien téléphone." />
-  <meta property="og:title" content="Pyrex Apple — Tech Store à Cotonou" />
-  <meta property="og:description" content="iPhone, MacBook, Samsung. Testés, garantis, livrés le jour même. Échange accepté." />
-  <meta property="og:image" content="assets/img/png/logo.png" />
+  <link rel="preload" as="image" href="assets/img/products/iphone-17-pro.webp" />
+  <meta property="og:site_name" content="Pyrex Apple" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Pyrex Apple — iPhone, MacBook & Samsung à Zongo, Cotonou</title>
+  <meta name="description" content="Pyrex Apple, Zongo (Cotonou) : iPhone, MacBook, Samsung Galaxy et accessoires neufs, premium ou reconditionnés. Testés devant vous, garantis par écrit, livrés le jour même. Reprise de votre ancien téléphone." />
+  <meta property="og:title" content="Pyrex Apple — iPhone, MacBook & Samsung à Zongo, Cotonou" />
+  <meta property="og:description" content="Testés devant vous, garantis par écrit, livrés le jour même. Votre ancien téléphone paie une partie du nouveau." />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ElectronicsStore","name":"Pyrex Apple","image":"assets/img/brand/png/photo-profil-1080.png","telephone":"+229 01 07 34 95 32",
+   "address":{"@type":"PostalAddress","streetAddress":"1re rue à droite après l'agence STM de Zongo","addressLocality":"Cotonou","addressRegion":"Littoral","addressCountry":"BJ"},
+   "geo":{"@type":"GeoCoordinates","latitude":6.3622644,"longitude":2.408512},
+   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"22:00"}],
+   "priceRange":"110 000 – 2 490 000 FCFA","currenciesAccepted":"XOF","paymentAccepted":"Espèces, Mobile Money"}
+  </script>
 </head>
 <body data-page="home">
   <div id="site-header"></div>
 
-  <main>
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero__panel">
-          <div class="hero__copy">
-            <span class="hero__badge"><b>NOUVEAU</b> iPhone 18 Pro et Galaxy S26 Ultra en stock</span>
-            <h1>La tech premium,<br><em>au juste prix.</em></h1>
-            <p class="hero__lead">iPhone, MacBook et Samsung Galaxy neufs, premium ou reconditionnés. Chaque appareil est testé devant toi, garanti et livré le jour même à Cotonou.</p>
-            <div class="hero__actions">
-              <a href="boutique.html" class="btn btn--primary btn--lg">Voir la boutique <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
-              <a href="echange.html" class="btn btn--ghost btn--lg">Estimer mon échange</a>
-            </div>
-            <div class="hero__proof">
-              <div><svg class="ico" viewBox="0 0 24 24"><use href="#i-shield"/></svg> Garantie jusqu'à 12 mois</div>
-              <div><svg class="ico" viewBox="0 0 24 24"><use href="#i-test"/></svg> Contrôle en 30 points</div>
-              <div><svg class="ico" viewBox="0 0 24 24"><use href="#i-wallet"/></svg> Paiement Mobile Money</div>
-            </div>
-          </div>
-          <div class="hero__stage" aria-hidden="true">
-            <img class="h-mac" src="https://www.apple.com/v/mac/compare/ai/images/overview/compare_macbook_pro_m5_14_spaceblack__e8bg1b4hasii_large_2x.jpg" alt="">
-            <img class="h-sam" src="https://images.samsung.com/is/image/samsung/p6pim/fr/s2602/gallery/fr-galaxy-s26-ultra-s948-sm-s948bzvdeub-thumb-550858460?$720_576_PNG$" alt="">
-            <img class="h-iph" src="https://www.apple.com/v/iphone/compare/am/images/overview/all_models_iphone_18_pro_max__dbualgv1t9iu_large_2x.jpg" alt="">
-            <div class="hero__tag hero__tag--a">Testé devant toi<strong>Avant de payer</strong></div>
-            <div class="hero__tag hero__tag--b">Reprise iPhone 13<strong>jusqu'à 135 000 F</strong></div>
+  <main id="contenu">
+    <!-- ============ HÉROS ============ -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="wax wax--right"></span>
+        <span class="glow glow--a"></span>
+        <span class="glow glow--b"></span>
+      </div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="hero__pill"><svg class="ico" viewBox="0 0 24 24"><use href="#i-pinf"/></svg><span>Zongo<span class="hide-sm">, Cotonou</span></span><i></i> <span class="status" data-status="short"></span></p>
+          <h1 class="t-hero" id="heroTitle">Votre iPhone,<br><span class="gold">testé devant&nbsp;vous.</span></h1>
+          <p class="hero__lead">iPhone, MacBook et Samsung Galaxy neufs, premium ou reconditionnés. Vous l'essayez avec votre SIM, vous payez ensuite. Et votre ancien téléphone peut payer une partie du nouveau.</p>
+
+          <form class="hsearch" id="hsearch" role="search" autocomplete="off">
+            <label class="sfield">
+              <svg class="ico" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+              <input id="hInput" type="search" placeholder="iPhone 15 Pro, MacBook Air, Galaxy S26…" aria-label="Rechercher un produit" aria-controls="hResults">
+              <button class="btn btn--dark" type="submit"><svg class="ico" viewBox="0 0 24 24"><use href="#i-search"/></svg><span>Rechercher</span></button>
+            </label>
+            <div class="hsearch__panel" id="hPanel" hidden><div class="sresults" id="hResults"></div></div>
+          </form>
+
+          <div class="hero__chips">
+            <a class="chip chip--dark" href="boutique.html?cat=iphone"><svg class="ico" viewBox="0 0 24 24"><use href="#i-mobile"/></svg>iPhone</a>
+            <a class="chip chip--dark" href="boutique.html?cat=mac"><svg class="ico" viewBox="0 0 24 24"><use href="#i-laptop"/></svg>MacBook</a>
+            <a class="chip chip--dark" href="boutique.html?cat=samsung"><svg class="ico" viewBox="0 0 24 24"><use href="#i-android"/></svg>Samsung</a>
+            <a class="chip chip--dark" href="boutique.html?cat=accessoires"><svg class="ico" viewBox="0 0 24 24"><use href="#i-head"/></svg>Accessoires</a>
+            <a class="chip chip--dark" href="echange.html"><svg class="ico" viewBox="0 0 24 24"><use href="#i-swap"/></svg>Échange</a>
           </div>
         </div>
-        <div class="brands">
-          <span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>iPhone</span>
-          <span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>MacBook</span>
-          <span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Samsung Galaxy</span>
-          <span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>AirPods & Apple Watch</span>
-          <span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg>Accessoires</span>
+
+        <div class="hero__visual">
+          <a class="stage" href="produit.html?id=iphone-17-pro" aria-label="iPhone 17 Pro, voir la fiche">
+            <span class="wax" aria-hidden="true"></span>
+            <img class="stage__img" src="assets/img/products/iphone-17-pro.webp" alt="iPhone 17 Pro orange cosmique, vu de dos et de face" width="555" height="675" fetchpriority="high">
+            <span class="stage__tag"><svg class="ico" viewBox="0 0 24 24"><use href="#i-shield"/></svg>Contrôlé en 30 points</span>
+            <span class="stage__price"><strong>iPhone 17 Pro</strong>dès <b data-price-of="iphone-17-pro"></b></span>
+          </a>
+          <div class="ticket" id="ticket" aria-label="Exemple d'échange : de l'estimation en ligne au paiement en boutique"></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ CATÉGORIES ============ -->
-    <section class="section section--tight">
-      <div class="container">
-        <div class="section__head">
-          <div><p class="kicker">Nos rayons</p><h2>Que cherches-tu ?</h2></div>
-          <a href="boutique.html" class="link-arrow">Tout voir <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
-        </div>
-        <div class="cats" data-reveal>
-          <a class="cat" href="boutique.html?cat=iphone">
-            <div><h3>iPhone</h3><p data-count="iphone"></p></div>
-            <img class="cat__img" src="https://www.apple.com/v/iphone/compare/am/images/overview/all_models_iphone17_pro_max__b0mls9pkcs2u_large_2x.jpg" alt="" loading="lazy">
-            <div class="cat__go"><span>Découvrir</span><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></div>
-          </a>
-          <a class="cat" href="boutique.html?cat=mac">
-            <div><h3>MacBook</h3><p data-count="mac"></p></div>
-            <img class="cat__img cat__img--wide" src="https://www.apple.com/v/mac/compare/ai/images/overview/compare_macbook_air_m5_skyblue__fty6fmk5v1me_large_2x.jpg" alt="" loading="lazy">
-            <div class="cat__go"><span>Découvrir</span><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></div>
-          </a>
-          <a class="cat" href="boutique.html?cat=samsung">
-            <div><h3>Samsung Galaxy</h3><p data-count="samsung"></p></div>
-            <img class="cat__img" style="mix-blend-mode:normal" src="https://images.samsung.com/is/image/samsung/p6pim/fr/f2607/gallery/fr-galaxy-z-fold8-f971-599786-sm-f971bzgbeub-thumb-553805487?$720_576_PNG$" alt="" loading="lazy">
-            <div class="cat__go"><span>Découvrir</span><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></div>
-          </a>
-          <a class="cat" href="boutique.html?cat=accessoires">
-            <div><h3>Accessoires</h3><p data-count="accessoires"></p></div>
-            <img class="cat__img" style="width:56%" src="https://www.apple.com/v/airpods/compare/j/images/overview/airpods_pro_3_white__doiqzzyvwxyu_large_2x.png" alt="" loading="lazy">
-            <div class="cat__go"><span>Découvrir</span><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></span></div>
-          </a>
-        </div>
+    <!-- ============ CONFIANCE ============ -->
+    <section class="trust" aria-label="Nos engagements">
+      <div class="container trust__grid">
+        <div class="trust__item"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-seal"/></svg></span><p><strong>Testé devant vous</strong>Avec votre SIM, avant de payer.</p></div>
+        <div class="trust__item"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-shield"/></svg></span><p><strong>Garantie écrite</strong>Jusqu'à 12 mois, reçu fourni.</p></div>
+        <div class="trust__item"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-moped"/></svg></span><p><strong>Livré le jour même</strong>Cotonou et Calavi, dès <span data-delivery-from></span>.</p></div>
+        <div class="trust__item"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-coins"/></svg></span><p><strong>Paiement à la réception</strong>Espèces ou Mobile Money.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ RAYONS ============ -->
+    <section class="container section" aria-labelledby="catsTitle">
+      <div class="shead">
+        <div><h2 id="catsTitle">Que cherchez-vous ?</h2><p>Du premier smartphone au MacBook Pro, tout est contrôlé, garanti et disponible à Zongo.</p></div>
+        <a class="link-arrow" href="boutique.html">Tout le catalogue <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="cats" data-reveal>
+        <a class="cat" href="boutique.html?cat=iphone">
+          <span class="wax" aria-hidden="true"></span>
+          <img class="cat__img" src="assets/img/products/iphone-18-pro.webp" alt="" loading="lazy">
+          <div class="cat__body"><span class="cat__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-mobile"/></svg></span><h3>iPhone</h3><p data-count="iphone"></p></div>
+        </a>
+        <a class="cat" href="boutique.html?cat=mac">
+          <span class="wax" aria-hidden="true"></span>
+          <img class="cat__img is-wide" src="assets/img/products/mba15-starlight.webp" alt="" loading="lazy">
+          <div class="cat__body"><span class="cat__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-laptop"/></svg></span><h3>MacBook</h3><p data-count="mac"></p></div>
+        </a>
+        <a class="cat" href="boutique.html?cat=samsung">
+          <span class="wax" aria-hidden="true"></span>
+          <img class="cat__img" src="assets/img/products/galaxy-s26-ultra.webp" alt="" loading="lazy">
+          <div class="cat__body"><span class="cat__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-android"/></svg></span><h3>Samsung Galaxy</h3><p data-count="samsung"></p></div>
+        </a>
+        <a class="cat" href="boutique.html?cat=accessoires">
+          <span class="wax" aria-hidden="true"></span>
+          <img class="cat__img" src="assets/img/products/airpods-pro-3.webp" alt="" loading="lazy">
+          <div class="cat__body"><span class="cat__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-head"/></svg></span><h3>Accessoires</h3><p data-count="accessoires"></p></div>
+        </a>
+      </div>
+      <div class="budget" data-reveal>
+        <a href="boutique.html?max=150000"><small>Petit budget</small><strong>Moins de 150&nbsp;000&nbsp;F</strong><span data-budget-count="0-150000"></span></a>
+        <a href="boutique.html?min=150000&amp;max=400000"><small>Bon compromis</small><strong>150&nbsp;000 – 400&nbsp;000&nbsp;F</strong><span data-budget-count="150000-400000"></span></a>
+        <a href="boutique.html?min=400000&amp;max=800000"><small>Haut de gamme</small><strong>400&nbsp;000 – 800&nbsp;000&nbsp;F</strong><span data-budget-count="400000-800000"></span></a>
+        <a href="boutique.html?min=800000"><small>Le meilleur</small><strong>Plus de 800&nbsp;000&nbsp;F</strong><span data-budget-count="800000-0"></span></a>
       </div>
     </section>
 
     <!-- ============ NOUVEAUTÉS ============ -->
-    <section class="section section--tight" style="padding-top:24px">
-      <div class="container">
-        <div class="section__head">
-          <div><p class="kicker">Nouveautés</p><h2>Les derniers arrivés</h2></div>
-          <div class="rail-nav">
-            <button class="icon-btn" data-rail="railNew" data-dir="-1" aria-label="Précédent"><svg class="ico" viewBox="0 0 24 24"><use href="#i-left"/></svg></button>
-            <button class="icon-btn" data-rail="railNew" data-dir="1" aria-label="Suivant"><svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></button>
-          </div>
-        </div>
-        <div class="rail" id="railNew"></div>
+    <section class="container section" aria-labelledby="newTitle">
+      <div class="shead">
+        <div><h2 id="newTitle">Les derniers arrivages</h2><p>iPhone 18 Pro, Galaxy S26 Ultra, MacBook Air M5 : les nouveautés sont déjà à Zongo.</p></div>
+        <a class="link-arrow" href="boutique.html?etat=neuf">Tous les appareils neufs <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="rail" id="railNew"></div>
+      <div class="rail-nav">
+        <button class="icon-btn icon-btn--ring" type="button" data-rail="railNew" data-dir="-1" aria-label="Produits précédents"><svg class="ico" viewBox="0 0 24 24"><use href="#i-cl"/></svg></button>
+        <button class="icon-btn icon-btn--ring" type="button" data-rail="railNew" data-dir="1" aria-label="Produits suivants"><svg class="ico" viewBox="0 0 24 24"><use href="#i-cr"/></svg></button>
       </div>
     </section>
 
-    <!-- ============ ÉCHANGE ============ -->
-    <section class="section section--tight">
-      <div class="container">
-        <div class="trade-banner">
-          <div>
-            <p class="kicker">Échange & reprise</p>
-            <h2>Ton ancien téléphone paie une partie du nouveau.</h2>
-            <p>iPhone, Samsung ou MacBook, même abîmé : on le reprend. Estime sa valeur en 30 secondes, passe en boutique pour le contrôle et repars avec ton nouvel appareil.</p>
-            <a href="echange.html" class="btn btn--light btn--lg">Estimer mon appareil <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
-          </div>
-          <div class="trade-flow">
-            <div class="trade-flow__item">
-              <img src="https://www.apple.com/v/iphone/compare/am/images/overview/all_models_iphone13__djrs654bvh4y_large_2x.jpg" alt="">
-              <div><small>Tu nous donnes</small><strong>iPhone 13 · 128 Go</strong></div><em>− 135 000 F</em>
-            </div>
-            <div class="trade-flow__arrow">↓</div>
-            <div class="trade-flow__item">
-              <img src="https://www.apple.com/v/iphone/compare/am/images/overview/all_models_iphone16_pro_max__bwaeywevi8vm_large_2x.jpg" alt="">
-              <div><small>Tu repars avec</small><strong>iPhone 16 Pro Max</strong></div><em>740 000 F</em>
-            </div>
-            <div class="trade-flow__item" style="background:rgba(123,47,247,.2);border-color:rgba(177,108,255,.4)">
-              <div style="padding-left:4px"><small>Il te reste à payer</small><strong style="font-size:1.4rem">≈ 605 000 F</strong></div>
-            </div>
-          </div>
+    <!-- ============ COMMANDER ============ -->
+    <section class="container section" id="commander" aria-labelledby="howTitle">
+      <div class="how">
+        <div class="shead">
+          <div><h2 id="howTitle">Commander, c'est quatre étapes</h2><p>Pas de compte à créer, rien à payer en ligne. Tout se passe sur WhatsApp, puis devant vous.</p></div>
         </div>
+        <ol class="how__steps">
+          <li><span class="how__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-bag"/></svg><b>1</b></span><h3>Choisissez</h3><p>Stockage, couleur, état : chaque option affiche son prix et sa garantie.</p></li>
+          <li><span class="how__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-wa"/></svg><b>2</b></span><h3>Envoyez sur WhatsApp</h3><p>Votre commande est rédigée pour vous. On confirme la disponibilité.</p></li>
+          <li><span class="how__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-sim"/></svg><b>3</b></span><h3>Testez avec votre SIM</h3><p>À la boutique ou à la livraison, vous vérifiez tout avant de payer.</p></li>
+          <li><span class="how__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-coins"/></svg><b>4</b></span><h3>Payez à la réception</h3><p>Espèces, MTN MoMo, Moov Money ou Celtiis Cash. Reçu et garantie écrite.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ÉCHANGE & CONTRÔLE ============ -->
+    <section class="container section" aria-label="Échange et contrôle">
+      <div class="duo">
+        <article class="bigcard bigcard--dark">
+          <span class="wax" aria-hidden="true"></span><span class="glow" aria-hidden="true"></span>
+          <h3>Votre ancien téléphone paie une partie du nouveau</h3>
+          <p>iPhone, Samsung ou MacBook, même abîmé. Choisissez votre appareil pour voir sa valeur : le prix final est fixé en 10 minutes à la boutique.</p>
+          <div class="calc">
+            <label for="calcModel">Votre appareil actuel<select class="select select--dark" id="calcModel"></select></label>
+            <label for="calcWant">Vous voulez<select class="select select--dark" id="calcWant"></select></label>
+            <div class="calc__out">
+              <div><small>Reprise estimée</small><strong id="calcVal">—</strong></div>
+              <div><small>Reste à payer</small><strong id="calcDiff">—</strong></div>
+            </div>
+            <p class="calc__note">Pour un appareil en très bon état, batterie 85 % et plus.</p>
+          </div>
+          <div class="bigcard__foot">
+            <a class="btn btn--primary btn--lg btn--pill" id="calcGo" href="echange.html">Affiner mon estimation <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <article class="bigcard bigcard--gold">
+          <span class="wax" aria-hidden="true"></span>
+          <img class="seal" src="assets/img/brand/logo-badge-symbole.svg" alt="" width="82" height="82" loading="lazy">
+          <h3 style="padding-right:84px">Chaque appareil passe 30 contrôles</h3>
+          <p>Acheter d'occasion ne doit pas faire peur. Rien ne sort de la boutique sans ces tests, et vous les refaites vous-même avant de payer.</p>
+          <ul class="ticks ticks--2">
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>IMEI propre, appareil non bloqué</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>iCloud ou Google déconnecté</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Écran, tactile et True Tone</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Santé de la batterie affichée</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Caméras, Face ID ou empreinte</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Réseau, Wi-Fi et Bluetooth</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Micros et haut-parleurs</li>
+            <li><span><svg class="ico" viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Charge filaire et sans fil</li>
+          </ul>
+          <div class="grades" data-grades></div>
+          <div class="bigcard__foot">
+            <a class="btn btn--dark btn--lg btn--pill" href="boutique.html">Voir les appareils contrôlés</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- ============ BEST-SELLERS ============ -->
-    <section class="section section--tight">
-      <div class="container">
-        <div class="section__head">
-          <div><p class="kicker">Les plus demandés</p><h2>Best-sellers & bons plans</h2></div>
-          <a href="boutique.html" class="link-arrow">Toute la boutique <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
-        </div>
-        <div class="grid grid--4" id="gridBest"></div>
+    <section class="container section" aria-labelledby="bestTitle">
+      <div class="shead">
+        <div><h2 id="bestTitle">Les plus demandés</h2><p>Best-sellers et bons plans du moment, avec leur garantie.</p></div>
+        <a class="link-arrow" href="boutique.html">Voir toute la boutique <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
       </div>
+      <div class="grid grid--4" id="gridBest"></div>
     </section>
 
-    <!-- ============ ENGAGEMENTS ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="section__head">
-          <div><p class="kicker">Nos engagements</p><h2>Acheter sans stress</h2><p class="section__sub">Acheter un téléphone d'occasion fait peur. Chez Pyrex Apple, chaque appareil passe par le même contrôle, et tu le testes toi-même avant de payer.</p></div>
-        </div>
-        <div class="perks" data-reveal>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-shield"/></svg></div><h3>Garantie écrite</h3><p>12 mois sur le neuf, 6 mois sur le premium, 3 mois sur le reconditionné. Reçu fourni à chaque achat.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-test"/></svg></div><h3>Contrôle en 30 points</h3><p>Face ID, caméras, batterie, réseau, haut-parleurs, écran d'origine : tout est vérifié, et tu testes devant nous.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-lock"/></svg></div><h3>Jamais bloqué</h3><p>Tous nos appareils sont libres d'iCloud, de compte Google et de tout opérateur. Ta SIM marche immédiatement.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-truck"/></svg></div><h3>Livré le jour même</h3><p>À Cotonou, Godomey et Abomey-Calavi. Tu paies à la réception, en espèces ou Mobile Money.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ COMMENT COMMANDER ============ -->
-    <section class="section section--dark">
-      <div class="container">
-        <div class="section__head">
-          <div><p class="kicker">Simple et rapide</p><h2>Commander en 3 étapes</h2></div>
-          <a href="boutique.html" class="btn btn--light">Commencer mes achats</a>
-        </div>
-        <div class="steps" data-reveal>
-          <div class="step"><h3>Choisis ton appareil</h3><p>Parcours la boutique, choisis le stockage ou la configuration, et ajoute au panier.</p></div>
-          <div class="step"><h3>Valide sur WhatsApp</h3><p>Ton panier est envoyé en un clic sur notre WhatsApp. On confirme la disponibilité en quelques minutes.</p></div>
-          <div class="step"><h3>Teste, paie, profite</h3><p>Récupère en boutique ou fais-toi livrer. Tu testes l'appareil, puis tu paies. Simple.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ VISITE ============ -->
-    <section class="section">
-      <div class="container visit">
-        <div class="visit__card">
-          <p class="kicker">Boutique physique</p>
-          <h2>Viens nous voir à Cotonou</h2>
-          <ul class="info-list">
-            <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-clock"/></svg><div><small>Horaires</small><span class="status" data-status></span><table class="hours" data-hours></table></div></li>
-            <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg><div><small>Adresse</small><strong data-address></strong></div></li>
-            <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-phone"/></svg><div><small>Téléphone & WhatsApp</small><a data-phone></a></div></li>
+    <!-- ============ BOUTIQUE ============ -->
+    <section class="container section" aria-labelledby="visitTitle">
+      <div class="visit">
+        <figure class="visit__photo">
+          <img src="assets/img/boutique-enseigne.webp" alt="Enseigne « Welcome to Pyrex Apple » sur le mur en bois de la boutique" loading="lazy" width="1079" height="990">
+          <span class="status" data-status></span>
+          <figcaption><strong>Pyrex Apple, Zongo</strong>L'enseigne à l'entrée de la boutique</figcaption>
+        </figure>
+        <div class="panel visit__card">
+          <h2 id="visitTitle">Passez nous voir à Zongo</h2>
+          <p>Venez essayer l'appareil avant de l'acheter, ou faire estimer votre ancien téléphone.</p>
+          <ul class="info">
+            <li><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><div><small>Pour nous trouver</small><ol data-directions></ol></div></li>
+            <li><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-clock"/></svg></span><div><small>Horaires</small><table class="hours" data-hours></table></div></li>
+            <li><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-phone"/></svg></span><div><small>Téléphone et WhatsApp</small><a data-phone></a><button class="copy" type="button" data-copy-phone><svg class="ico" viewBox="0 0 24 24"><use href="#i-copy"/></svg>Copier</button></div></li>
           </ul>
           <div class="visit__actions">
-            <a class="btn btn--primary" data-maps-link>Itinéraire</a>
-            <a class="btn btn--wa" data-wa="Bonjour Pyrex Apple, je souhaite passer en boutique.">WhatsApp</a>
+            <a class="btn btn--dark btn--pill" data-maps-link><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg> Itinéraire Google Maps</a>
+            <a class="btn btn--wa btn--pill" data-wa="Bonjour Pyrex Apple, je souhaite passer à la boutique. Pouvez-vous m'indiquer le chemin ?"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Demander le chemin</a>
           </div>
         </div>
-        <div class="visit__map"><iframe data-map title="Pyrex Apple sur Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="container section" id="faq" aria-labelledby="faqTitle">
+      <div class="faq">
+        <div>
+          <h2 id="faqTitle">Questions fréquentes</h2>
+          <p>Tout ce qu'il faut savoir avant votre premier achat.</p>
+          <a class="btn btn--ghost btn--pill" href="contact.html#faq">Toutes les questions <svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="accordion">
+          <details><summary>Quelle différence entre neuf, premium et reconditionné ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Le neuf est scellé, jamais activé, garanti 12 mois. Le premium est un appareil importé en état quasi neuf, sans réparation, garanti 6 mois. Le reconditionné a été remis en état par nos techniciens et est garanti 3 mois. Les trois passent les mêmes 30 contrôles.</p></details>
+          <details><summary>Comment être sûr qu'un iPhone n'est pas bloqué iCloud ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Tous nos iPhone sont vérifiés avant la vente. À la boutique, nous réinitialisons l'appareil devant vous et vous l'activez avec votre propre identifiant Apple avant de payer.</p></details>
+          <details><summary>Comment fonctionne l'échange ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Estimez votre appareil sur la page Échange et envoyez la demande sur WhatsApp. À la boutique, nous le contrôlons, fixons le prix final, transférons vos données et vous ne payez que la différence.</p></details>
+          <details><summary>Combien coûte la livraison ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Le retrait à Zongo est gratuit. La livraison est faite le jour même à Cotonou (1&nbsp;500&nbsp;F) et à Abomey-Calavi ou Godomey (2&nbsp;000&nbsp;F). Les autres villes du Bénin sont livrées en 24 à 48 h (3&nbsp;500&nbsp;F).</p></details>
+          <details><summary>Les prix du site sont-ils à jour ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Les prix sont mis à jour régulièrement mais peuvent bouger selon les arrivages. Le prix confirmé sur WhatsApp est celui qui s'applique.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPEL FINAL ============ -->
+    <section class="container section" aria-labelledby="ctaTitle">
+      <div class="cta">
+        <span class="wax" aria-hidden="true"></span>
+        <div class="cta__inner">
+          <div>
+            <h2 id="ctaTitle">Un modèle en tête&nbsp;?<br>Demandez&#8209;le sur WhatsApp.</h2>
+            <p>On vérifie le stock et on vous envoie photos et vidéo de l'appareil.</p>
+          </div>
+          <div class="cta__btns">
+            <a class="btn btn--dark btn--lg btn--pill" data-wa="Bonjour Pyrex Apple, je cherche un appareil :"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Écrire sur WhatsApp</a>
+            <a class="btn btn--light btn--lg btn--pill" href="boutique.html">Voir la boutique</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>

@@ -2,88 +2,100 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d0c12" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#14120e" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <title>Contact, garanties & FAQ — Pyrex Apple, Cotonou</title>
-  <meta name="description" content="Adresse, horaires et contact de Pyrex Apple à Cotonou. Garanties, livraison, paiement et réponses à vos questions." />
+  <meta property="og:site_name" content="Pyrex Apple" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Nous trouver — Pyrex Apple, Zongo Cotonou</title>
+  <meta name="description" content="Comment trouver Pyrex Apple à Zongo, Cotonou : itinéraire depuis l'agence STM et Étoile Rouge, horaires, téléphone, garanties, livraison et questions fréquentes." />
+  <meta property="og:title" content="Trouver la boutique Pyrex Apple à Zongo" />
 </head>
 <body data-page="contact">
   <div id="site-header"></div>
 
-  <main>
-    <div class="container">
-      <header class="page-head">
-        <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Contact</span></nav>
-        <h1>On est là pour toi</h1>
-        <p>Une question sur un appareil, une commande ou un échange ? Écris-nous sur WhatsApp, appelle-nous ou passe directement en boutique.</p>
-      </header>
-    </div>
+  <div class="container banner-wrap">
+    <header class="banner">
+      <span class="wax wax--right" aria-hidden="true"></span><span class="glow" aria-hidden="true"></span>
+      <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Nous trouver</span></nav>
+      <h1>Passez nous voir à Zongo</h1>
+      <p>Une question sur un appareil, une commande ou un échange ? Écrivez-nous sur WhatsApp, appelez-nous ou passez directement à la boutique.</p>
+      <div class="banner__chips">
+        <a class="chip chip--dark" data-wa="Bonjour Pyrex Apple !"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg>Écrire sur WhatsApp</a>
+        <a class="chip chip--dark" data-phone-chip href="tel:+2290107349532"><svg class="ico" viewBox="0 0 24 24"><use href="#i-phone"/></svg>Appeler</a>
+        <a class="chip chip--dark" data-maps-link><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg>Ouvrir dans Google Maps</a>
+      </div>
+    </header>
+  </div>
 
-    <section class="section--tight" style="padding-top:28px;padding-bottom:64px">
-      <div class="container visit">
-        <div class="visit__card">
-          <p class="kicker">Boutique physique</p>
-          <h2>Pyrex Apple, Cotonou</h2>
-          <ul class="info-list">
-            <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-clock"/></svg><div><small>Horaires</small><span class="status" data-status></span><table class="hours" data-hours></table></div></li>
-            <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg><div><small>Adresse (Plus Code Google Maps)</small><strong data-address></strong></div></li>
-            <li><svg class="ico" viewBox="0 0 24 24"><use href="#i-phone"/></svg><div><small>Téléphone & WhatsApp</small><a data-phone></a></div></li>
+  <main id="contenu">
+    <section class="container section--sm" id="itineraire" style="padding-top:28px">
+      <div class="visit">
+        <div class="panel visit__card">
+          <h2>Pyrex Apple, Zongo</h2>
+          <p>À deux pas de l'agence STM, en venant d'Étoile Rouge.</p>
+          <ul class="info">
+            <li><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><div><small>Itinéraire</small><ol data-directions></ol></div></li>
+            <li><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-clock"/></svg></span><div><small>Horaires</small><span class="status" data-status></span><table class="hours" data-hours></table></div></li>
+            <li><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-phone"/></svg></span><div><small>Téléphone et WhatsApp</small><a data-phone></a><button class="copy" type="button" data-copy-phone><svg class="ico" viewBox="0 0 24 24"><use href="#i-copy"/></svg>Copier</button></div></li>
           </ul>
           <div class="visit__actions">
-            <a class="btn btn--wa" data-wa="Bonjour Pyrex Apple !"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Écrire sur WhatsApp</a>
-            <a class="btn btn--primary" data-maps-link>Itinéraire</a>
+            <a class="btn btn--wa btn--pill" data-wa="Bonjour Pyrex Apple !"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Écrire sur WhatsApp</a>
+            <a class="btn btn--dark btn--pill" data-maps-link><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg> Ouvrir dans Google Maps</a>
           </div>
         </div>
-        <div class="visit__map"><iframe data-map title="Pyrex Apple sur Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <figure class="visit__photo">
+          <img src="assets/img/boutique-enseigne.webp" alt="Enseigne « Welcome to Pyrex Apple » sur le mur en bois de la boutique" width="1079" height="990">
+          <span class="status" data-status></span>
+          <figcaption><strong>L'enseigne à l'entrée</strong>Zongo, Cotonou</figcaption>
+        </figure>
+      </div>
+      <div class="map" style="margin-top:20px"><iframe data-map title="Pyrex Apple sur Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </section>
+
+    <section class="container section" id="garanties">
+      <div class="shead"><div><h2>Ce que couvre la garantie</h2><p>Une garantie écrite, avec reçu, quel que soit l'état de l'appareil.</p></div></div>
+      <div class="perks" data-reveal>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-shield"/></svg></span><h3>Neuf scellé · 12 mois</h3><p>Boîte jamais ouverte, facture fournie. Toute panne matérielle est prise en charge.</p></article>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-seal"/></svg></span><h3>Premium · 6 mois</h3><p>Appareil importé quasi neuf, pièces d'origine, batterie contrôlée.</p></article>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-receipt"/></svg></span><h3>Reconditionné · 3 mois</h3><p>Remis en état et contrôlé en 30 points par nos techniciens.</p></article>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-swap"/></svg></span><h3>Échange sous 72 h</h3><p>Un défaut constaté dans les 72 h après l'achat ? Nous échangeons l'appareil.</p></article>
+      </div>
+      <p class="note">La garantie ne couvre pas la casse, l'oxydation ni un appareil ouvert ou réparé ailleurs. Conservez votre reçu.</p>
+    </section>
+
+    <section class="container section" id="livraison">
+      <div class="shead"><div><h2>Livraison et paiement</h2><p>Retirez votre appareil à Zongo ou faites-vous livrer le jour même.</p></div></div>
+      <div class="perks" data-reveal>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-store"/></svg></span><h3>Retrait à Zongo</h3><p>Gratuit. Votre appareil est prêt 1 h après la confirmation sur WhatsApp.</p></article>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-moped"/></svg></span><h3>Cotonou et Calavi</h3><p>Livraison le jour même : 1&nbsp;500&nbsp;F à Cotonou, 2&nbsp;000&nbsp;F à Abomey-Calavi et Godomey.</p></article>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-truck"/></svg></span><h3>Autres villes</h3><p>Expédition sécurisée en 24 à 48 h vers Porto-Novo, Parakou, Bohicon… (3&nbsp;500&nbsp;F).</p></article>
+        <article class="panel perk"><span class="ibox"><svg class="ico" viewBox="0 0 24 24"><use href="#i-d-coins"/></svg></span><h3>Paiement à la réception</h3><p>Espèces, MTN MoMo, Moov Money ou Celtiis Cash. Vous payez après avoir testé.</p></article>
       </div>
     </section>
 
-    <section class="section section--white" id="garanties">
-      <div class="container">
-        <div class="section__head"><div><p class="kicker">Garanties & retours</p><h2>Ce qui est couvert</h2></div></div>
-        <div class="perks" data-reveal>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-shield"/></svg></div><h3>Neuf scellé · 12 mois</h3><p>Boîte jamais ouverte, facture fournie. Toute panne matérielle est prise en charge.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-spark"/></svg></div><h3>Premium · 6 mois</h3><p>Appareil importé quasi neuf, pièces d'origine, batterie contrôlée.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-test"/></svg></div><h3>Reconditionné · 3 mois</h3><p>Remis en état et contrôlé en 30 points par nos techniciens.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-swap"/></svg></div><h3>Échange sous 72 h</h3><p>Un défaut constaté dans les 72 h après l'achat ? On échange l'appareil.</p></article>
-        </div>
-        <p class="muted" style="margin-top:20px;font-size:.88rem">La garantie ne couvre pas la casse, l'oxydation, ni un appareil ouvert ou réparé ailleurs. Conserve ton reçu.</p>
-      </div>
-    </section>
-
-    <section class="section" id="livraison">
-      <div class="container">
-        <div class="section__head"><div><p class="kicker">Livraison & paiement</p><h2>Reçois ta commande vite</h2></div></div>
-        <div class="perks" data-reveal>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-pin"/></svg></div><h3>Retrait en boutique</h3><p>Gratuit. Ton appareil est prêt en 1 h après confirmation sur WhatsApp.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-truck"/></svg></div><h3>Cotonou & Calavi</h3><p>Livraison le jour même, de 1 500 à 2 000 F selon le quartier.</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-arrow"/></svg></div><h3>Autres villes</h3><p>Expédition sécurisée en 24 à 48 h vers Porto-Novo, Parakou, Bohicon…</p></article>
-          <article class="perk"><div class="perk__ico"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wallet"/></svg></div><h3>Paiement à la réception</h3><p>Espèces, MTN MoMo, Moov Money ou Celtiis Cash. Tu paies après avoir testé.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--soft" id="faq">
-      <div class="container faq">
+    <section class="container section" id="faq">
+      <div class="faq">
         <div>
-          <p class="kicker">FAQ</p>
           <h2>Questions fréquentes</h2>
-          <p class="section__sub">Tu ne trouves pas ta réponse ? Écris-nous, on répond vite.</p>
-          <a class="btn btn--ghost" style="margin-top:22px" data-wa="Bonjour Pyrex Apple, j'ai une question :">Poser ma question</a>
+          <p>Vous ne trouvez pas votre réponse ? Écrivez-nous, nous répondons vite.</p>
+          <a class="btn btn--dark btn--pill" data-wa="Bonjour Pyrex Apple, j'ai une question :"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wa"/></svg> Poser ma question</a>
         </div>
         <div class="accordion">
-          <details open><summary>Quelle différence entre neuf, premium et reconditionné ?</summary><p>Le neuf est scellé, jamais activé. Le premium est un appareil importé en état quasi neuf, sans réparation. Le reconditionné a été remis en état (batterie ou coque changée si besoin) par nos techniciens. Les trois sont testés et garantis.</p></details>
-          <details><summary>Comment savoir si un iPhone n'est pas bloqué iCloud ?</summary><p>Tous nos iPhone sont vérifiés avant la vente. En boutique, on réinitialise l'appareil devant toi et tu l'actives avec ton propre identifiant Apple avant de payer.</p></details>
-          <details><summary>Comment fonctionne l'échange ?</summary><p>Estime ton appareil sur la page Échange et envoie la demande sur WhatsApp. En boutique, on contrôle ton téléphone, on fixe le prix final, on transfère tes données et tu paies seulement la différence.</p></details>
-          <details><summary>Les claviers des MacBook sont en AZERTY ?</summary><p>Ça dépend de l'arrivage : nous avons des modèles AZERTY et QWERTY. Précise ta préférence dans la note de commande, on te confirme sur WhatsApp.</p></details>
-          <details><summary>Puis-je réserver un appareil ?</summary><p>Oui. Envoie-nous le modèle sur WhatsApp, on le garde 24 h. Un petit acompte peut être demandé pour les modèles très demandés.</p></details>
-          <details><summary>Les prix du site sont-ils à jour ?</summary><p>Les prix sont mis à jour régulièrement mais peuvent bouger selon les arrivages. Le prix confirmé sur WhatsApp est celui qui s'applique.</p></details>
+          <details><summary>Quelle différence entre neuf, premium et reconditionné ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Le neuf est scellé, jamais activé, garanti 12 mois. Le premium est un appareil importé en état quasi neuf, sans réparation, garanti 6 mois. Le reconditionné a été remis en état par nos techniciens (batterie ou coque changée si besoin) et est garanti 3 mois. Les trois passent les mêmes 30 contrôles.</p></details>
+          <details><summary>Comment être sûr qu'un iPhone n'est pas bloqué iCloud ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Tous nos iPhone sont vérifiés avant la vente. À la boutique, nous réinitialisons l'appareil devant vous et vous l'activez avec votre propre identifiant Apple avant de payer.</p></details>
+          <details><summary>Comment fonctionne l'échange ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Estimez votre appareil sur la page Échange et envoyez la demande sur WhatsApp. À la boutique, nous le contrôlons, fixons le prix final, transférons vos données et vous ne payez que la différence.</p></details>
+          <details><summary>Les claviers des MacBook sont-ils en AZERTY ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Cela dépend de l'arrivage : nous avons des modèles AZERTY et QWERTY. Précisez votre préférence dans la note de commande, nous vous confirmons sur WhatsApp.</p></details>
+          <details><summary>Puis-je réserver un appareil ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Oui. Envoyez-nous le modèle sur WhatsApp, nous le gardons 24 h. Un acompte peut être demandé pour les modèles très demandés.</p></details>
+          <details><summary>Les prix du site sont-ils à jour ?<span><svg class="ico" viewBox="0 0 24 24"><use href="#i-cd"/></svg></span></summary><p>Les prix sont mis à jour régulièrement mais peuvent bouger selon les arrivages. Le prix confirmé sur WhatsApp est celui qui s'applique.</p></details>
         </div>
       </div>
     </section>
